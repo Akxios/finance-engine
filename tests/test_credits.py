@@ -1,18 +1,11 @@
 from decimal import Decimal
 
-import pytest
-
-from finance_engine.services.credits import CreditService
+import finance_engine as engine
 
 
-@pytest.fixture
-def service():
-    return CreditService()
+def test_annuity() -> None:
 
-
-def test_annuity(service: CreditService) -> None:
-
-    result = service.annuity(
+    result = engine.credits.annuity(
         amount=Decimal("1_000_000.00"),
         rate=Decimal("5.1"),
         months=12,
@@ -23,8 +16,8 @@ def test_annuity(service: CreditService) -> None:
     assert result.total_payment == Decimal("1027839.78")
 
 
-def test_differentiated(service: CreditService) -> None:
-    result = service.differentiated(
+def test_differentiated() -> None:
+    result = engine.credits.differentiated(
         amount=Decimal("1_000_000.00"),
         rate=Decimal("2.5"),
         months=12,

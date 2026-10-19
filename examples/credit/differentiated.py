@@ -1,13 +1,12 @@
 from decimal import Decimal
 
-from finance_engine.engine import FinanceEngine
+import finance_engine as engine
 from finance_engine.models.credit import Payment
 
 
 def main():
-    finance = FinanceEngine()
 
-    result = finance.credits.differentiated(
+    result = engine.credits.differentiated(
         amount=Decimal("300_000.00"),
         rate=Decimal("5.0"),
         months=120,

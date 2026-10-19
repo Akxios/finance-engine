@@ -3,11 +3,11 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from finance_engine.services.savings import SavingsService
+import finance_engine as engine
 
 
 def test_projection() -> None:
-    result = SavingsService.projection(
+    result = engine.savings.projection(
         monthly_contribution=Decimal("50000.00"),
         months=12,
     )
@@ -29,7 +29,7 @@ def test_projection_rejects_invalid_input(
     months: int,
 ) -> None:
     with pytest.raises(ValidationError):
-        _ = SavingsService.projection(
+        _ = engine.savings.projection(
             monthly_contribution=monthly_contribution,
             months=months,
         )

@@ -1,12 +1,11 @@
 from decimal import Decimal
 
-from finance_engine.engine import FinanceEngine
+import finance_engine as engine
 
 
 def main():
-    finance = FinanceEngine()
 
-    loan_comparison = finance.credits.loan_comparison(
+    loan_comparison = engine.credits.loan_comparison(
         amount=Decimal("300_000.00"),
         rate=Decimal("5.0"),
         months=120,

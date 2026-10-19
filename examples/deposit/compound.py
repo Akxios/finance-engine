@@ -1,12 +1,11 @@
 from decimal import Decimal
 
-from finance_engine import FinanceEngine
+import finance_engine as engine
 
 
 def main():
-    finance = FinanceEngine()
 
-    result = finance.deposits.compound_interest(
+    result = engine.deposits.compound_interest(
         amount=Decimal("100_000"),
         rate=Decimal("5.0"),
         days=365,

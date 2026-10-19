@@ -1,12 +1,11 @@
 from decimal import Decimal
 
-from finance_engine import FinanceEngine
+import finance_engine as engine
 
 
 def main():
-    finance = FinanceEngine()
 
-    result = finance.savings.projection(
+    result = engine.savings.projection(
         monthly_contribution=Decimal("50_000"),
         months=12,
     )

@@ -1,12 +1,11 @@
 from decimal import Decimal
 
-from finance_engine.engine import FinanceEngine
+import finance_engine as engine
 
 
 def main():
-    finance = FinanceEngine()
 
-    result = finance.credits.annuity(
+    result = engine.credits.annuity(
         amount=Decimal("300_000.00"),
         rate=Decimal("5.0"),
         months=120,

@@ -1,19 +1,10 @@
 from decimal import Decimal
 
-import pytest
-
-from finance_engine.services.deposits import DepositService
+import finance_engine as engine
 
 
-@pytest.fixture
-def service() -> DepositService:
-    return DepositService()
-
-
-def test_simple_interest(
-    service: DepositService,
-) -> None:
-    result = service.simple_interest(
+def test_simple_interest() -> None:
+    result = engine.deposits.simple_interest(
         amount=Decimal("100_000"),
         rate=Decimal("5"),
         days=90,
@@ -22,10 +13,8 @@ def test_simple_interest(
     assert result.interest == Decimal("1232.88")
 
 
-def test_compound_interest(
-    service: DepositService,
-) -> None:
-    result = service.compound_interest(
+def test_compound_interest() -> None:
+    result = engine.deposits.compound_interest(
         amount=Decimal("100_000"),
         rate=Decimal("5"),
         days=90,

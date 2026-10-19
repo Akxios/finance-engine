@@ -75,13 +75,10 @@ def calculate_total_invest(
 
 
 def cost_basis(
-    average_price: int,
+    average_price: Decimal,
     current_qty: int,
-) -> Decimal | None:
+) -> Decimal:
     """Calculation of the initial cost of a position"""
-
-    if average_price is None:  # pyright: ignore[reportUnnecessaryComparison]
-        return None
 
     value = average_price * Decimal(current_qty)
     return value.quantize(Decimal(CENT), rounding=ROUND_HALF_UP)
